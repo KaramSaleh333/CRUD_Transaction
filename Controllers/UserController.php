@@ -143,9 +143,8 @@ class UserController {
 
     public function delete()
     {
-
-        doit($this->db , "DELETE FROM `users` WHERE id = '$_SESSION[id]'");
         session_start(['name'=> 'xc','cookie_lifetime' => 3600*2]);
+        doit($this->db , "DELETE FROM `users` WHERE id = '$_SESSION[id]'");
         session_unset();
         session_destroy();
         header("location: login.php");
